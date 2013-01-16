@@ -1,7 +1,6 @@
 def search input_string, search_item
   can_count = 0
-  puts input_string.gsub( /#{search_item}/i ){ |s| "(#{s})" }
-  input_string.scan( /#{search_item}/i ) { can_count += 1 }
+  puts input_string.gsub( /#{search_item}/i ){ |s| can_count += 1; "(#{s})" }
   puts "Total Occurences Found : #{can_count}"
 end
 
