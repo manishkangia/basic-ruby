@@ -1,13 +1,8 @@
 class Array
   def length_hash
-    store_by_length = Hash.new()
+    store_by_length = Hash.new{ |hash, key| hash[key] = [] }
     for str in self
-      if store_by_length.keys.include? (str.to_s.length)
-        store_by_length[str.to_s.length] << str
-        else
-          store_by_length[str.to_s.length] = []
-          store_by_length[str.to_s.length] << str
-      end
+      store_by_length[str.to_s.length] << str
     end
   return store_by_length
   end
