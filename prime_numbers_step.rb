@@ -1,9 +1,5 @@
-def get_prime_till num
-  arr = []
-  (1..num).each { |n| arr << n }
-  (2..num/2).each do |n|
-    (0..num).step(n) { |a| arr.delete( a ) if a != n }
-  end
-  arr
+require "mathn"
+def print_prime_till num
+  (0..num).step(1) { |a| puts a if a.prime? }
 end
-puts get_prime_till 500
+print_prime_till 500
