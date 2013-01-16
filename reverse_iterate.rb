@@ -1,7 +1,9 @@
 class Array
   def reverse_iterate 
     self.reverse!
-    self.each { |i| yield i }
+    for num in self
+      yield num
+    end
   end
 end
 [2,4,6,8].reverse_iterate { |i| print "#{i} " }
