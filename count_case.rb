@@ -11,4 +11,7 @@ class String
     count_hash
   end
 end
-puts "wHat ARE yoU DoiNG @ 123 %%\n\n".count_case
+puts 'Enter a string to get the number of different cases'
+input_string = gets.chomp.strip
+case_count_hash = input_string.count_case
+case_count_hash.each { |key,value| puts "#{key} characters : #{value}"}
