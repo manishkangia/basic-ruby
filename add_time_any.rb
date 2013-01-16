@@ -1,7 +1,6 @@
 def add_time time_array
   sum_time = [0,0,0]
   time_array.each do |time1|
-    print sum_time,time1
     sum_time[0] += time1[0].to_i 
     sum_time[1] += time1[1].to_i 
     sum_time[2] += time1[2].to_i 
@@ -16,7 +15,7 @@ end
 def validate_add_times *time_values
   time_array, check = [],true
   time_values.each do |time_1| 
-    if (time_1 =~ /^\d*:\d*:\d*$/) then time_array << time_1.split(':')
+    if (time_1 =~ /^(([0-1][0-9])|([2][0-3])|([0-9])):[0-5]?[0-9]:[0-5]?[0-9]$/ ) then time_array << time_1.split(':')
     else
       check = false
       break
