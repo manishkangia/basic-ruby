@@ -1,10 +1,6 @@
 def add_time time1, time2
   time1 = time1.map { |num| num.to_i }
   time2 = time2.map { |num| num.to_i }
-  if time1[0] > 23 || time2[0] > 23 || time1[1] > 60 || time2[1] > 60 || time1[2] > 60 || time2[2] > 60
-    puts 'invalid time'
-    return
-  end 
   sum_time = []
   sum_time[0] = time1[0] + time2[0]
   sum_time[1] = time1[1] + time2[1]
@@ -18,6 +14,6 @@ end
 puts 'enter two times to add them'
 time_1 = gets.chomp
 time_2 = gets.chomp
-if ( (time_1 =~ /^\d*:\d*:\d*$/) && (time_2 =~ /^\d*:\d*:\d*$/) ) then add_time time_1.split(':'), time_2.split(':')
+if ( (time_1 =~ /^(([0-1][0-9])|([2][0-3])|([0-9])):[0-5]?[0-9]:[0-5]?[0-9]$/) && (time_2 =~ /^(([0-1][0-9])|([2][0-3])|([0-9])):[0-5]?[0-9]:[0-5]?[0-9]$/ ) ) then add_time time_1.split(':'), time_2.split(':')
   else puts 'invalid time values'
 end
