@@ -3,6 +3,6 @@ def get_alpha_count
   input_string = gets.chomp
   char_counts = Hash.new(0)
   input_string.each_char { |c| char_counts[c] += 1 if c =~ /[A-z]/ }
-  return counts
+  return char_counts
 end
-puts get_alpha_count
+get_alpha_count.each { |key,value| puts "\"#{key}\" => #{value}\ "}
