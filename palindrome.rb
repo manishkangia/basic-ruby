@@ -4,6 +4,9 @@ def check_palindrome test_string
   end
 end
 begin
-  input = gets.chop
-  check_palindrome input unless input.length < 2 #minimum 2 characters, also checks the possibility of entering q/Q to exit in first attempt
-end until input =~ /[q]/i
+  input = gets.chop.strip
+  if input.length > 1 && !input.include?( ' ' ) then check_palindrome( input )
+    elsif input =~ /^[^q]$/i then puts "#{input} is a palindrome"
+      elsif input.include?( ' ' ) then puts "Plaindrome is only for a single word"
+  end
+end until input =~ /^[q]$/i
