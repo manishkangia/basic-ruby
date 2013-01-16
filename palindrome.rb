@@ -4,9 +4,7 @@ def check_palindrome test_string
   end
 end
 begin
-  input = gets.chop.strip
-  if input.length > 1 && !input.include?( ' ' ) then check_palindrome( input )
-    elsif input =~ /^[^q]$/i then puts "#{input} is a palindrome"
-      elsif input.include?( ' ' ) then puts "Plaindrome is only for a single word"
-  end
+  input = gets.chop
+  check_palindrome( input ) unless input =~ /^[q]$/i || input.include?( ' ' )
+  puts "No white space" if input.include?( ' ' )
 end until input =~ /^[q]$/i
