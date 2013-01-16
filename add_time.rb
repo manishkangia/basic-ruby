@@ -1,8 +1,14 @@
-def add_time time_1, time_2
+def add_time time1, time2
+  time1 = time1.map { |num| num.to_i }
+  time2 = time2.map { |num| num.to_i }
+  if time1[0] > 23 || time2[0] > 23 || time1[1] > 60 || time2[1] > 60 || time1[2] > 60 || time2[2] > 60
+    puts 'invalid time'
+    return
+  end 
   sum_time = []
-  sum_time[0] = time1[0].to_i + time2[0].to_i
-  sum_time[1] = time1[1].to_i + time2[1].to_i
-  sum_time[2] = time1[2].to_i + time2[2].to_i
+  sum_time[0] = time1[0] + time2[0]
+  sum_time[1] = time1[1] + time2[1]
+  sum_time[2] = time1[2] + time2[2]
   if sum_time[2] > 60 then sum_time[1] += sum_time[2]/60; sum_time[2] = sum_time[2]%60 end
   if sum_time[1] > 60 then sum_time[0] += sum_time[1]/60; sum_time[1] = sum_time[1]%60 end
   if sum_time[0] >= 24 then print "#{sum_time[0]/24} day(s) & " ; sum_time[0] %= 24; end
