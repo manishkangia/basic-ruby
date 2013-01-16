@@ -8,15 +8,13 @@ class Interest
   def compund_interest
     @amount*((1 + (@@rate/100))**@time)
   end
-end
-def interest_diff
-  puts "Enter the initial_amount depositied and the time period to compare SI and CI amounts"
-  pri = gets.chop
-  time_period = gets.chop
-  obj = Interest.new.tap do |a|
-    a.amount = pri.to_i
-    a.time = time_period.to_i
+
+  def interest_diff
+    "#{(compund_interest - simple_interest).round(3)}"
   end
-  puts "Difference ( CI - SI ) is #{(obj.compund_interest - obj.simple_interest).round(3)}"
 end
-interest_diff
+int_obj = Interest.new()
+puts "Enter the initial_amount depositied and the time period to compare SI and CI amounts"
+int_obj.amount = gets.chop.to_i
+int_obj.time= gets.chop.to_i
+puts "Difference between compound interest and simple interest is #{int_obj.interest_diff}" 
