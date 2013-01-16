@@ -1,21 +1,17 @@
 class Name
   attr_accessor :first_name, :last_name
-  def first_name
-    raise 'first name cant be null' if @first_name.length == 0
-    if @first_name.length > 0
-      raise 'first name begins with capital' unless @first_name[0].capitalize == @first_name[0]
-    end
-    @first_name
-  end
-  def last_name 
-    raise 'last name cant be null' if @last_name.length == 0
-    @last_name
+  def initialize f_name, l_name
+    raise 'first name cant be null' if f_name.empty?
+    raise 'first name begins with capital' unless f_name.capitalize == f_name 
+    raise 'last name cant be null' if l_name.empty?
+    @first_name, @last_name = f_name, l_name
+    puts "welcome " + @first_name + " " + @last_name
+  rescue
+  puts 'first name with first alphabet in capitals and none null'
   end
 end
-new_name = Name.new()
 puts 'Enter first name(begin with capital) '
-new_name.first_name = gets.chomp
-new_name.first_name
+first_name = gets.chomp
 puts 'Enter last name'
-new_name.last_name = gets.chomp
-puts "welcome " + new_name.first_name + " " + new_name.last_name
+last_name = gets.chomp
+new_name = Name.new( first_name, last_name)
