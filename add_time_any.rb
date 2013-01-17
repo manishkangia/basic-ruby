@@ -1,28 +1,31 @@
-def add_time time_array
-  sum_time = [0,0,0]
+require 'time'
+def add_time *time_array
+  all_valid = true
+  valid_regex = /^(([0-1][0-9])|([2][0-3])|([0-9])):[0-5]?[0-9]:[0-5]?[0-9]$/
   time_array.each do |time1|
-    sum_time[0] += time1[0].to_i 
-    sum_time[1] += time1[1].to_i 
-    sum_time[2] += time1[2].to_i 
-  end
-
-  if sum_time[2] >= 60 then sum_time[1] += sum_time[2]/60; sum_time[2] = sum_time[2]%60 end
-  if sum_time[1] >= 60 then sum_time[0] += sum_time[1]/60; sum_time[1] = sum_time[1]%60 end
-  if sum_time[0] >= 24 then print "#{sum_time[0]/24} day(s) & " ; sum_time[0] %= 24; end
-  puts "#{sum_time[0]}:#{sum_time[1]}:#{sum_time[2]}"
-end
-
-def validate_add_times *time_values
-  time_array, check = [],true
-  time_values.each do |time_1| 
-    if (time_1 =~ /^(([0-1][0-9])|([2][0-3])|([0-9])):[0-5]?[0-9]:[0-5]?[0-9]$/ ) then time_array << time_1.split(':')
-    else
-      check = false
-      break
+    if time1 =~ valid_regex then time1 = time1.split(':')
+    else 
+      all_valid = false
+      puts 'invalid input'
+      return
     end
   end
-    puts 'bad input' if( check == false )
-    add_time time_array if (check)
+  if all_valid 
+    sum = [0,0,0]
+    time_array.each do |time1|
+      t1 = Time.strptime(time1,'%H:%M:%S') 
+      sum[0] += t1.hour
+      sum[1] += t1.min
+      sum[2] += t1.sec 
+    end
+    sum = sum[0] * 3600 + sum[1] * 60 + sum[2]
+    days = sum/86400
+    sum = sum%86400
+    hours = sum/3600
+    sum = sum%3600
+    mins = sum/60
+    secs = sum%60
+    puts "#{days} day(s) & #{hours}:#{mins}:#{secs}"
+  end
 end
-
-validate_add_times "11:23:07","22:53:45","0:23:23","23:45:56"
+add_time "11:23:07","22:53:45","0:23:23","23:45:56"
