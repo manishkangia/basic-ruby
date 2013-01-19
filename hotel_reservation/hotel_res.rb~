@@ -1,5 +1,3 @@
-# Person needs to visit the hotel before the beginning of any season offer to avail it 
-# you can check for current year only
 require 'json' 
 require 'date'
 
