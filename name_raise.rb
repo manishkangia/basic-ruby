@@ -7,11 +7,15 @@ class Name
     @first_name, @last_name = f_name, l_name
     puts "welcome " + @first_name + " " + @last_name
   rescue
-  puts 'first name with first alphabet in capitals and none null'
+    puts 'first name with first alphabet in capitals and none null'
+    get_name
   end
 end
-puts 'Enter first name(begin with capital) '
-first_name = gets.chomp
-puts 'Enter last name'
-last_name = gets.chomp
-new_name = Name.new( first_name, last_name)
+def get_name
+  puts 'Enter first name(begin with capital) '
+  first_name = gets.chomp
+  puts 'Enter last name'
+  last_name = gets.chomp
+  new_name = Name.new( first_name, last_name)
+end
+get_name
